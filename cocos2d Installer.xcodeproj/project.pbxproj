@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0158D6D7185F75D400DBB654 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D6D6185F75D400DBB654 /* Cocoa.framework */; };
+		0158D6E1185F75D400DBB654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6DF185F75D400DBB654 /* InfoPlist.strings */; };
+		0158D6E3185F75D400DBB654 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D6E2185F75D400DBB654 /* main.m */; };
+		0158D6E7185F75D400DBB654 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6E5185F75D400DBB654 /* Credits.rtf */; };
+		0158D6EA185F75D400DBB654 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D6E9185F75D400DBB654 /* AppDelegate.m */; };
+		0158D6ED185F75D400DBB654 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6EB185F75D400DBB654 /* MainMenu.xib */; };
+		0158D6EF185F75D400DBB654 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6EE185F75D400DBB654 /* Images.xcassets */; };
+		0158D6F6185F75D400DBB654 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D6F5185F75D400DBB654 /* XCTest.framework */; };
+		0158D6F7185F75D400DBB654 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D6D6185F75D400DBB654 /* Cocoa.framework */; };
+		0158D6FF185F75D400DBB654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6FD185F75D400DBB654 /* InfoPlist.strings */; };
+		0158D701185F75D400DBB654 /* cocos2d_InstallerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D700185F75D400DBB654 /* cocos2d_InstallerTests.m */; };
+		0158D70B185F777E00DBB654 /* Icon512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0158D70A185F777E00DBB654 /* Icon512.png */; };
+		0158D70E185F7C1100DBB654 /* CCTemplateInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D70D185F7C1100DBB654 /* CCTemplateInstaller.m */; };
+		0158D712185F7CCC00DBB654 /* CCInstallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D710185F7CCC00DBB654 /* CCInstallerViewController.m */; };
+		0158D713185F7CCC00DBB654 /* CCInstallerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158D711185F7CCC00DBB654 /* CCInstallerViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0158D6F8185F75D400DBB654 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0158D6CB185F75D400DBB654 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0158D6D2185F75D400DBB654;
+			remoteInfo = "cocos2d Installer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0158D6D3185F75D400DBB654 /* cocos2d Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cocos2d Installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0158D6D6185F75D400DBB654 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0158D6D9185F75D400DBB654 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0158D6DA185F75D400DBB654 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0158D6DB185F75D400DBB654 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0158D6DE185F75D400DBB654 /* cocos2d Installer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cocos2d Installer-Info.plist"; sourceTree = "<group>"; };
+		0158D6E0185F75D400DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0158D6E2185F75D400DBB654 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0158D6E4185F75D400DBB654 /* cocos2d Installer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cocos2d Installer-Prefix.pch"; sourceTree = "<group>"; };
+		0158D6E6185F75D400DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0158D6E8185F75D400DBB654 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0158D6E9185F75D400DBB654 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0158D6EC185F75D400DBB654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0158D6EE185F75D400DBB654 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0158D6F4185F75D400DBB654 /* cocos2d InstallerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cocos2d InstallerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0158D6F5185F75D400DBB654 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0158D6FC185F75D400DBB654 /* cocos2d InstallerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cocos2d InstallerTests-Info.plist"; sourceTree = "<group>"; };
+		0158D6FE185F75D400DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0158D700185F75D400DBB654 /* cocos2d_InstallerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cocos2d_InstallerTests.m; sourceTree = "<group>"; };
+		0158D70A185F777E00DBB654 /* Icon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon512.png; path = ../../../Downloads/Icon512.png; sourceTree = "<group>"; };
+		0158D70C185F7C1100DBB654 /* CCTemplateInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTemplateInstaller.h; sourceTree = "<group>"; };
+		0158D70D185F7C1100DBB654 /* CCTemplateInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTemplateInstaller.m; sourceTree = "<group>"; };
+		0158D70F185F7CCC00DBB654 /* CCInstallerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCInstallerViewController.h; sourceTree = "<group>"; };
+		0158D710185F7CCC00DBB654 /* CCInstallerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCInstallerViewController.m; sourceTree = "<group>"; };
+		0158D711185F7CCC00DBB654 /* CCInstallerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCInstallerViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0158D6D0185F75D400DBB654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D6D7185F75D400DBB654 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0158D6F1185F75D400DBB654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D6F7185F75D400DBB654 /* Cocoa.framework in Frameworks */,
+				0158D6F6185F75D400DBB654 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0158D6CA185F75D400DBB654 = {
+			isa = PBXGroup;
+			children = (
+				0158D6DC185F75D400DBB654 /* cocos2d Installer */,
+				0158D6FA185F75D400DBB654 /* cocos2d InstallerTests */,
+				0158D6D5185F75D400DBB654 /* Frameworks */,
+				0158D6D4185F75D400DBB654 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0158D6D4185F75D400DBB654 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0158D6D3185F75D400DBB654 /* cocos2d Installer.app */,
+				0158D6F4185F75D400DBB654 /* cocos2d InstallerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0158D6D5185F75D400DBB654 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0158D6D6185F75D400DBB654 /* Cocoa.framework */,
+				0158D6F5185F75D400DBB654 /* XCTest.framework */,
+				0158D6D8185F75D400DBB654 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0158D6D8185F75D400DBB654 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0158D6D9185F75D400DBB654 /* AppKit.framework */,
+				0158D6DA185F75D400DBB654 /* CoreData.framework */,
+				0158D6DB185F75D400DBB654 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0158D6DC185F75D400DBB654 /* cocos2d Installer */ = {
+			isa = PBXGroup;
+			children = (
+				0158D70A185F777E00DBB654 /* Icon512.png */,
+				0158D6E8185F75D400DBB654 /* AppDelegate.h */,
+				0158D6E9185F75D400DBB654 /* AppDelegate.m */,
+				0158D70C185F7C1100DBB654 /* CCTemplateInstaller.h */,
+				0158D70D185F7C1100DBB654 /* CCTemplateInstaller.m */,
+				0158D70F185F7CCC00DBB654 /* CCInstallerViewController.h */,
+				0158D710185F7CCC00DBB654 /* CCInstallerViewController.m */,
+				0158D711185F7CCC00DBB654 /* CCInstallerViewController.xib */,
+				0158D6EB185F75D400DBB654 /* MainMenu.xib */,
+				0158D6EE185F75D400DBB654 /* Images.xcassets */,
+				0158D6DD185F75D400DBB654 /* Supporting Files */,
+			);
+			path = "cocos2d Installer";
+			sourceTree = "<group>";
+		};
+		0158D6DD185F75D400DBB654 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0158D6DE185F75D400DBB654 /* cocos2d Installer-Info.plist */,
+				0158D6DF185F75D400DBB654 /* InfoPlist.strings */,
+				0158D6E2185F75D400DBB654 /* main.m */,
+				0158D6E4185F75D400DBB654 /* cocos2d Installer-Prefix.pch */,
+				0158D6E5185F75D400DBB654 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0158D6FA185F75D400DBB654 /* cocos2d InstallerTests */ = {
+			isa = PBXGroup;
+			children = (
+				0158D700185F75D400DBB654 /* cocos2d_InstallerTests.m */,
+				0158D6FB185F75D400DBB654 /* Supporting Files */,
+			);
+			path = "cocos2d InstallerTests";
+			sourceTree = "<group>";
+		};
+		0158D6FB185F75D400DBB654 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0158D6FC185F75D400DBB654 /* cocos2d InstallerTests-Info.plist */,
+				0158D6FD185F75D400DBB654 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0158D6D2185F75D400DBB654 /* cocos2d Installer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0158D704185F75D400DBB654 /* Build configuration list for PBXNativeTarget "cocos2d Installer" */;
+			buildPhases = (
+				0158D6CF185F75D400DBB654 /* Sources */,
+				0158D6D0185F75D400DBB654 /* Frameworks */,
+				0158D6D1185F75D400DBB654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "cocos2d Installer";
+			productName = "cocos2d Installer";
+			productReference = 0158D6D3185F75D400DBB654 /* cocos2d Installer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0158D6F3185F75D400DBB654 /* cocos2d InstallerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0158D707185F75D400DBB654 /* Build configuration list for PBXNativeTarget "cocos2d InstallerTests" */;
+			buildPhases = (
+				0158D6F0185F75D400DBB654 /* Sources */,
+				0158D6F1185F75D400DBB654 /* Frameworks */,
+				0158D6F2185F75D400DBB654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0158D6F9185F75D400DBB654 /* PBXTargetDependency */,
+			);
+			name = "cocos2d InstallerTests";
+			productName = "cocos2d InstallerTests";
+			productReference = 0158D6F4185F75D400DBB654 /* cocos2d InstallerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0158D6CB185F75D400DBB654 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "DynamicDust s.r.o.";
+				TargetAttributes = {
+					0158D6F3185F75D400DBB654 = {
+						TestTargetID = 0158D6D2185F75D400DBB654;
+					};
+				};
+			};
+			buildConfigurationList = 0158D6CE185F75D400DBB654 /* Build configuration list for PBXProject "cocos2d Installer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0158D6CA185F75D400DBB654;
+			productRefGroup = 0158D6D4185F75D400DBB654 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0158D6D2185F75D400DBB654 /* cocos2d Installer */,
+				0158D6F3185F75D400DBB654 /* cocos2d InstallerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0158D6D1185F75D400DBB654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D70B185F777E00DBB654 /* Icon512.png in Resources */,
+				0158D713185F7CCC00DBB654 /* CCInstallerViewController.xib in Resources */,
+				0158D6E1185F75D400DBB654 /* InfoPlist.strings in Resources */,
+				0158D6EF185F75D400DBB654 /* Images.xcassets in Resources */,
+				0158D6E7185F75D400DBB654 /* Credits.rtf in Resources */,
+				0158D6ED185F75D400DBB654 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0158D6F2185F75D400DBB654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D6FF185F75D400DBB654 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0158D6CF185F75D400DBB654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D6EA185F75D400DBB654 /* AppDelegate.m in Sources */,
+				0158D712185F7CCC00DBB654 /* CCInstallerViewController.m in Sources */,
+				0158D6E3185F75D400DBB654 /* main.m in Sources */,
+				0158D70E185F7C1100DBB654 /* CCTemplateInstaller.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0158D6F0185F75D400DBB654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0158D701185F75D400DBB654 /* cocos2d_InstallerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0158D6F9185F75D400DBB654 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0158D6D2185F75D400DBB654 /* cocos2d Installer */;
+			targetProxy = 0158D6F8185F75D400DBB654 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0158D6DF185F75D400DBB654 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0158D6E0185F75D400DBB654 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0158D6E5185F75D400DBB654 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0158D6E6185F75D400DBB654 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		0158D6EB185F75D400DBB654 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0158D6EC185F75D400DBB654 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0158D6FD185F75D400DBB654 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0158D6FE185F75D400DBB654 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0158D702185F75D400DBB654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0158D703185F75D400DBB654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0158D705185F75D400DBB654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cocos2d Installer/cocos2d Installer-Prefix.pch";
+				INFOPLIST_FILE = "cocos2d Installer/cocos2d Installer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0158D706185F75D400DBB654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cocos2d Installer/cocos2d Installer-Prefix.pch";
+				INFOPLIST_FILE = "cocos2d Installer/cocos2d Installer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0158D708185F75D400DBB654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cocos2d Installer.app/Contents/MacOS/cocos2d Installer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cocos2d Installer/cocos2d Installer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "cocos2d InstallerTests/cocos2d InstallerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0158D709185F75D400DBB654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cocos2d Installer.app/Contents/MacOS/cocos2d Installer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cocos2d Installer/cocos2d Installer-Prefix.pch";
+				INFOPLIST_FILE = "cocos2d InstallerTests/cocos2d InstallerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0158D6CE185F75D400DBB654 /* Build configuration list for PBXProject "cocos2d Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0158D702185F75D400DBB654 /* Debug */,
+				0158D703185F75D400DBB654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0158D704185F75D400DBB654 /* Build configuration list for PBXNativeTarget "cocos2d Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0158D705185F75D400DBB654 /* Debug */,
+				0158D706185F75D400DBB654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0158D707185F75D400DBB654 /* Build configuration list for PBXNativeTarget "cocos2d InstallerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0158D708185F75D400DBB654 /* Debug */,
+				0158D709185F75D400DBB654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0158D6CB185F75D400DBB654 /* Project object */;
+}
