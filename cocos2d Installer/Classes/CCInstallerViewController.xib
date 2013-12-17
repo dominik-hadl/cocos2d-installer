@@ -130,7 +130,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahn-Bu-1fl">
+                            <button fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="ahn-Bu-1fl">
                                 <rect key="frame" x="594" y="58" width="43" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" state="on" inset="2" id="Umg-46-oJH">
@@ -215,6 +215,9 @@
                     </subviews>
                 </customView>
             </subviews>
+            <connections>
+                <outlet property="documentationCheckbox" destination="ahn-Bu-1fl" id="itD-I1-fFp"/>
+            </connections>
         </view>
         <customView id="hrg-9d-UTQ">
             <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>

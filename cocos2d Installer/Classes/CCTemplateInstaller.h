@@ -18,6 +18,11 @@ typedef NS_ENUM(NSInteger, CCInstallationStatus)
 };
 
 @interface CCTemplateInstaller : NSObject
+{
+    NSMutableData *_logData;
+}
+
+@property (nonatomic, strong) NSString *logFilePath;
 
 + (NSNumber *)installerVersion;
 + (NSNumber *)cocosVersion;

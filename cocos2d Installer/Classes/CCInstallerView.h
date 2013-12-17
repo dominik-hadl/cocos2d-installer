@@ -10,4 +10,6 @@
 
 @interface CCInstallerView : NSView
 
+@property (nonatomic, weak) IBOutlet NSButton *documentationCheckbox;
+
 @end

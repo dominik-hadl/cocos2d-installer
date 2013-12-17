@@ -29,6 +29,18 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
     return @3.0;
 }
 
+
+- (instancetype)init
+{
+    self = [super init];
+    NSAssert(self, @"Couldn't initialise CCTemplateInstaller.");
+    
+    _logData = [NSMutableData data];
+    self.logFilePath = [NSString stringWithFormat:@"/tmp/cocos2d_error.log"];
+    
+    return self;
+}
+
 - (CCInstallationStatus)installationStatus
 {
     // 1. Check if installed
@@ -58,20 +70,83 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
 
 - (bool)installDependency:(CCTemplateInstallerDependency)dependency
 {
-    switch (dependency) {
+    switch (dependency)
+    {
         case CCTemplateInstallerDependencyCocos2d:
+            return [self runCommand:@""];
         case CCTemplateInstallerDependencyKazmath:
+            return [self runCommand:@""];
         case CCTemplateInstallerDependencyObjectAL:
+            return [self runCommand:@""];
         case CCTemplateInstallerDependencyObjectiveChipmunk:
-        case CCTemplateInstallerDependencyXcodeTemplates: break;
+            return [self runCommand:@""];
+        case CCTemplateInstallerDependencyXcodeTemplates:
+            return [self runCommand:@""];
     }
     return YES;
 }
 
 - (bool)installDocumentation
 {
+    return [self test];
+}
+
+- (bool)test
+{
+    return [self runCommand:@"ls -A"];
+}
+
+- (bool)runCommand:(NSString *)command
+{
+    NSLog(@"Running a command - %@.", command);
+    // Setup the task (command)
+    NSTask *task = [NSTask new];
+    [task setLaunchPath:@"/bin/sh"];
+    [task setArguments:@[@"-c", [NSString stringWithFormat:@"%@", command]]];
     
-    return YES;
+    // Setup the pipe
+    NSPipe *pipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    NSFileHandle *file = [pipe fileHandleForReading];
+    
+    // Run the command
+    [task launch];
+    
+    // Get the output
+    NSData *data = [file readDataToEndOfFile];
+    NSString *output = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    [self saveToLogFile:output];
+    bool success = ([task terminationStatus] == 0);
+    if (success) [self moveLogFileToDesktop];
+    return !success;
+}
+
+- (void)saveToLogFile:(NSString *)stringToSave
+{
+    NSLog(@"Saved new data to log file.");
+    //[_logData appendData:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]];
+    NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:self.logFilePath];
+    [outputFile seekToEndOfFile];
+    [outputFile writeData:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]];
+    [outputFile closeFile];
+}
+
+- (void)moveLogFileToDesktop
+{
+    NSLog(@"Log file moved to Desktop.");
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtPath:self.logFilePath
+                                            toPath:NSHomeDirectory()
+                                             error:&error];
+}
+
+- (void)deleteLogFile
+{
+    NSLog(@"Log file deleted.");
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:self.logFilePath
+                                               error:&error];
 }
 
 @end
