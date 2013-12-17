@@ -24,4 +24,7 @@ typedef NS_ENUM(NSInteger, CCInstallationStatus)
 
 - (CCInstallationStatus)installationStatus;
 
+- (bool)installTemplates;
+- (bool)installDocumentation;
+
 @end

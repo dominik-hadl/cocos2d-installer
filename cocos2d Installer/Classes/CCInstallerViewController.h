@@ -9,13 +9,22 @@
 #import <Cocoa/Cocoa.h>
 #import "CCTemplateInstaller.h"
 
+#import "CCIntroView.h"
+#import "CCInstallerView.h"
+
 typedef NS_ENUM(NSInteger, CCInstallerButton)
 {
+    CCInstallerButtonBack,
     CCInstallerButtonContinue,
-    CCInstallerButtonInstall
+    CCInstallerButtonInstall,
 };
 
 @interface CCInstallerViewController : NSViewController
+{
+    IBOutlet CCIntroView *_introView;
+    IBOutlet CCInstallerView *_installView;
+    IBOutlet NSView *_resultView;
+}
 
 @property (nonatomic, strong) CCTemplateInstaller *installer;
 
