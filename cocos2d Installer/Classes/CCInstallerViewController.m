@@ -3,22 +3,26 @@
 //  cocos2d Installer
 //
 //  Created by Dominik Hadl on 16/12/13.
-//  Copyright (c) 2013 DynamicDust s.r.o. All rights reserved.
-//
-
+//  Copyright (c) 2013 Dominik Hadl. All rights reserved.
+// -----------------------------------------------------------
 #import "CCInstallerViewController.h"
-
-@interface CCInstallerViewController ()
-
-@end
+// -----------------------------------------------------------
 
 @implementation CCInstallerViewController
+
+// -----------------------------------------------------------
+#pragma mark - Class Methods -
+// -----------------------------------------------------------
 
 + (instancetype)setupController
 {
     return [[CCInstallerViewController alloc] initWithNibName: @"CCInstallerViewController"
                                                        bundle: [NSBundle mainBundle]];
 }
+
+// -----------------------------------------------------------
+#pragma mark - Init & Dealloc -
+// -----------------------------------------------------------
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,9 @@
     return self;
 }
 
+// -----------------------------------------------------------
+#pragma mark - Button Callbacks -
+// -----------------------------------------------------------
 
 - (void)buttonPressed:(NSButton *)sender
 {
@@ -46,7 +53,9 @@
         }
         case CCInstallerButtonInstall:
             NSLog(@"Installing templates...");
-            if ([self.installer installTemplates])
+            
+            self.installer.shouldInstallDocumentation = (_installView.documentationCheckbox.state == NSOnState);
+            if ([self.installer install])
             {
                 NSLog(@"Templates installed succesfully.");
             }
@@ -54,18 +63,7 @@
             {
                 NSLog(@"Templates installation failed.");
             }
-            if (_installView.documentationCheckbox.state == NSOnState)
-            {
-                NSLog(@"Installing documentation...");
-                if ([self.installer installDocumentation])
-                {
-                    NSLog(@"Documentation installed succesfully.");
-                }
-                else
-                {
-                    NSLog(@"Documentation installation failed.");
-                }
-            }
+            
             break;
         case CCInstallerButtonBack:
             if ([self.view.subviews containsObject:_installView])
@@ -80,4 +78,6 @@
     }
 }
 
+// -----------------------------------------------------------
 @end
+// -----------------------------------------------------------

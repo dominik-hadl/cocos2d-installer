@@ -3,43 +3,64 @@
 //  cocos2d Installer
 //
 //  Created by Dominik Hadl on 16/12/13.
-//  Copyright (c) 2013 DynamicDust s.r.o. All rights reserved.
-//
-
+//  Copyright (c) 2013 Dominik Hadl. All rights reserved.
+// -----------------------------------------------------------
 #import "CCTemplateInstaller.h"
-
-typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
-{
-    CCTemplateInstallerDependencyCocos2d,
-    CCTemplateInstallerDependencyKazmath,
-    CCTemplateInstallerDependencyObjectAL,
-    CCTemplateInstallerDependencyObjectiveChipmunk,
-    CCTemplateInstallerDependencyXcodeTemplates
-};
+#import "Reachability.h"
+// -----------------------------------------------------------
 
 @implementation CCTemplateInstaller
+
+// -----------------------------------------------------------
+#pragma mark - Class Methods -
+// -----------------------------------------------------------
 
 + (NSNumber *)installerVersion
 {
     return [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
 }
 
+// -----------------------------------------------------------
+
 + (NSNumber *)cocosVersion
 {
     return @3.0;
 }
 
+// -----------------------------------------------------------
+#pragma mark - Init & Dealloc -
+// -----------------------------------------------------------
 
 - (instancetype)init
 {
     self = [super init];
     NSAssert(self, @"Couldn't initialise CCTemplateInstaller.");
     
-    _logData = [NSMutableData data];
-    self.logFilePath = [NSString stringWithFormat:@"/tmp/cocos2d_error.log"];
+    self.logFilePath = [NSTemporaryDirectory() stringByAppendingString:@"/cocos2d-installer/cocos2d_installer.log"];
+    _templatesFolderPath = [NSHomeDirectory() stringByAppendingString:@"/Library/Developer/Xcode/Templates"];
+    _filesDownloadStatus = CCTemplateInstallerDownloadStatusNotDownloaded;
     
     return self;
 }
+
+// -----------------------------------------------------------
+#pragma mark - Delegate Setup -
+// -----------------------------------------------------------
+
+- (void)setDelegate:(id<CCTemplateInstallerDelegate>)delegate
+{
+    if (_delegate != delegate)
+    {
+        _delegate = delegate;
+        
+        _delegateRespondsTo.progressValueDidChange = [_delegate respondsToSelector:@selector(progressValueDidChange:)];
+        _delegateRespondsTo.progressStringDidChange = [_delegate respondsToSelector:@selector(progressStringDidChange:)];
+    }
+}
+
+// -----------------------------------------------------------
+#pragma mark - Current Install Status -
+// -----------------------------------------------------------
 
 - (CCInstallationStatus)installationStatus
 {
@@ -57,23 +78,79 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
     return CCInstallationStatusUnknown;
 }
 
+// -----------------------------------------------------------
+#pragma mark - Install Methods -
+// -----------------------------------------------------------
+
+- (bool)install
+{
+    bool success = [self installTemplates];
+    if (self.shouldInstallDocumentation)
+        success = success & [self installDocumentation];
+    return success;
+}
+
+// -----------------------------------------------------------
+
 - (bool)installTemplates
 {
+    if (_filesDownloadStatus == CCTemplateInstallerDownloadStatusNotDownloaded)
+    {
+        [self downloadAllDependencies];
+
+        while (_filesDownloadStatus == CCTemplateInstallerDownloadStatusInProgress)
+        {
+            
+        };
+        if (_filesDownloadStatus == CCTemplateInstallerDownloadStatusFailed) return NO;
+    }
+    if (![self createTemplatesFolderIfNotExists]) return NO;
+/*  
     if (![self installDependency:CCTemplateInstallerDependencyCocos2d]) return NO;
     if (![self installDependency:CCTemplateInstallerDependencyKazmath]) return NO;
     if (![self installDependency:CCTemplateInstallerDependencyObjectAL]) return NO;
     if (![self installDependency:CCTemplateInstallerDependencyObjectiveChipmunk]) return NO;
     if (![self installDependency:CCTemplateInstallerDependencyXcodeTemplates]) return NO;
-    
+*/
+    [self deleteLogFile];
     return YES;
 }
+
+// -----------------------------------------------------------
+
+- (void)downloadAllDependencies
+{
+    NSURL *url = [NSURL URLWithString:@"https://github.com/cocos2d/cocos2d-iphone/archive/develop-v3.zip"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLDownload *download = [[NSURLDownload alloc] initWithRequest:request delegate:self];
+    download.deletesFileUponFailure = YES;
+    
+    _filesDownloadStatus = CCTemplateInstallerDownloadStatusInProgress;
+}
+
+// -----------------------------------------------------------
+
+- (bool)createTemplatesFolderIfNotExists
+{
+    return [[NSFileManager defaultManager] createDirectoryAtPath:_templatesFolderPath
+                                     withIntermediateDirectories:YES
+                                                      attributes:nil
+                                                           error:nil];
+}
+
+// -----------------------------------------------------------
 
 - (bool)installDependency:(CCTemplateInstallerDependency)dependency
 {
     switch (dependency)
     {
         case CCTemplateInstallerDependencyCocos2d:
-            return [self runCommand:@""];
+        {
+            self.progressString = @"Installing cocos2d library";
+            bool success = [self runCommand:@""];
+            self.progress += 10;
+            return success;
+        }
         case CCTemplateInstallerDependencyKazmath:
             return [self runCommand:@""];
         case CCTemplateInstallerDependencyObjectAL:
@@ -86,15 +163,22 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
     return YES;
 }
 
+// -----------------------------------------------------------
+
 - (bool)installDocumentation
 {
-    return [self test];
+    bool success = [self runCommand:@""];
+    
+    
+    
+    
+    if (success) [self deleteLogFile];
+    return success;
 }
 
-- (bool)test
-{
-    return [self runCommand:@"ls -A"];
-}
+// -----------------------------------------------------------
+#pragma mark - Run Shell Commands -
+// -----------------------------------------------------------
 
 - (bool)runCommand:(NSString *)command
 {
@@ -118,28 +202,47 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
                                              encoding:NSUTF8StringEncoding];
     [self saveToLogFile:output];
     bool success = ([task terminationStatus] == 0);
-    if (success) [self moveLogFileToDesktop];
-    return !success;
+    if (!success) [self moveLogFileToDesktop];
+    return success;
 }
+
+// -----------------------------------------------------------
+#pragma mark - Installation Logging -
+// -----------------------------------------------------------
 
 - (void)saveToLogFile:(NSString *)stringToSave
 {
     NSLog(@"Saved new data to log file.");
-    //[_logData appendData:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]];
-    NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:self.logFilePath];
-    [outputFile seekToEndOfFile];
-    [outputFile writeData:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]];
-    [outputFile closeFile];
+    if (!_logFile)
+    {
+        [[NSFileManager defaultManager] createFileAtPath:self.logFilePath
+                                                contents:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]
+                                              attributes:nil];
+        _logFile = [NSFileHandle fileHandleForWritingAtPath:self.logFilePath];
+        NSAssert(_logFile, @"Couldn't create log file handle");
+        return;
+    }
+    [_logFile seekToEndOfFile];
+    [_logFile writeData:[stringToSave dataUsingEncoding:NSUTF8StringEncoding]];
 }
+
+// -----------------------------------------------------------
 
 - (void)moveLogFileToDesktop
 {
     NSLog(@"Log file moved to Desktop.");
     NSError *error = nil;
     [[NSFileManager defaultManager] moveItemAtPath:self.logFilePath
-                                            toPath:NSHomeDirectory()
+                                            toPath:[NSHomeDirectory() stringByAppendingString:@"/Desktop/cocos2d_installer.log"]
                                              error:&error];
+    if (error)
+    {
+        // Handle error
+    }
+    _logFile = nil;
 }
+
+// -----------------------------------------------------------
 
 - (void)deleteLogFile
 {
@@ -147,6 +250,79 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:self.logFilePath
                                                error:&error];
+    if (error)
+    {
+        // Handle error
+    }
+    _logFile = nil;
 }
 
+// -----------------------------------------------------------
+#pragma mark - Progress -
+// -----------------------------------------------------------
+
+- (void)setProgress:(float)progress
+{
+    if (progress > 100) progress = 100;
+    else if (progress < 0) progress = 0;
+    _progress = progress;
+    
+    if (_delegateRespondsTo.progressValueDidChange)
+        [_delegate progressValueDidChange:_progress];
+}
+
+// -----------------------------------------------------------
+
+- (void)setProgressString:(NSString *)progressString
+{
+    
+}
+
+// -----------------------------------------------------------
+#pragma mark - NSURLDownload Delegate -
+// -----------------------------------------------------------
+
+- (void)downloadDidBegin:(NSURLDownload *)download
+{
+    
+}
+
+// -----------------------------------------------------------
+
+- (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename
+{
+    [download setDestination:[[NSTemporaryDirectory() stringByAppendingString:@"cocos2d-installer/"] stringByAppendingString:filename]
+              allowOverwrite:YES];
+}
+
+// -----------------------------------------------------------
+
+- (void)download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response
+{
+    _maxProgress = [response expectedContentLength];
+}
+
+// -----------------------------------------------------------
+
+- (void)download:(NSURLDownload *)download didReceiveDataOfLength:(NSUInteger)length
+{
+    
+}
+
+// -----------------------------------------------------------
+
+- (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error
+{
+    _filesDownloadStatus = CCTemplateInstallerDownloadStatusFailed;
+}
+
+// -----------------------------------------------------------
+
+- (void)downloadDidFinish:(NSURLDownload *)download
+{
+    _filesDownloadStatus = CCTemplateInstallerDownloadStatusSuccess;
+}
+
+// -----------------------------------------------------------
 @end
+// -----------------------------------------------------------

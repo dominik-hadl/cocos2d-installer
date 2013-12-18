@@ -19,6 +19,10 @@
 		0158D72A185FFCF700DBB654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0158D727185FFCF700DBB654 /* InfoPlist.strings */; };
 		0158D7561860036700DBB654 /* CCIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D7551860036700DBB654 /* CCIntroView.m */; };
 		0158D7591860037400DBB654 /* CCInstallerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D7581860037400DBB654 /* CCInstallerView.m */; };
+		0158D76118613E2E00DBB654 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0158D75E18613E2E00DBB654 /* LICENSE.txt */; };
+		0158D76218613E2E00DBB654 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D76018613E2E00DBB654 /* Reachability.m */; };
+		0158D76418613F5C00DBB654 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0158D76318613F5C00DBB654 /* LICENSE */; };
+		0158D7661861424900DBB654 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7651861424900DBB654 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +40,7 @@
 		0158D70F185F7CCC00DBB654 /* CCInstallerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCInstallerViewController.h; sourceTree = "<group>"; };
 		0158D710185F7CCC00DBB654 /* CCInstallerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCInstallerViewController.m; sourceTree = "<group>"; };
 		0158D711185F7CCC00DBB654 /* CCInstallerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCInstallerViewController.xib; sourceTree = "<group>"; };
-		0158D71B185FFB4900DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0158D71B185FFB4900DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0158D722185FFCC300DBB654 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0158D723185FFCC300DBB654 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0158D726185FFCF700DBB654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -45,6 +49,11 @@
 		0158D7551860036700DBB654 /* CCIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCIntroView.m; sourceTree = "<group>"; };
 		0158D7571860037400DBB654 /* CCInstallerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCInstallerView.h; sourceTree = "<group>"; };
 		0158D7581860037400DBB654 /* CCInstallerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCInstallerView.m; sourceTree = "<group>"; };
+		0158D75E18613E2E00DBB654 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		0158D75F18613E2E00DBB654 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0158D76018613E2E00DBB654 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0158D76318613F5C00DBB654 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		0158D7651861424900DBB654 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0158D7661861424900DBB654 /* SystemConfiguration.framework in Frameworks */,
 				0158D6D7185F75D400DBB654 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +89,7 @@
 		0158D6D5185F75D400DBB654 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0158D7651861424900DBB654 /* SystemConfiguration.framework */,
 				0158D6D6185F75D400DBB654 /* Cocoa.framework */,
 				0158D6D8185F75D400DBB654 /* Other Frameworks */,
 			);
@@ -98,7 +109,9 @@
 		0158D6DC185F75D400DBB654 /* cocos2d Installer */ = {
 			isa = PBXGroup;
 			children = (
+				0158D76318613F5C00DBB654 /* LICENSE */,
 				0158D720185FFC9B00DBB654 /* Classes */,
+				0158D75C18613E2400DBB654 /* Libraries */,
 				0158D6DD185F75D400DBB654 /* Supporting Files */,
 				0158D71F185FFB8600DBB654 /* Resources */,
 			);
@@ -176,6 +189,25 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		0158D75C18613E2400DBB654 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0158D75D18613E2E00DBB654 /* Reachability */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		0158D75D18613E2E00DBB654 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				0158D75E18613E2E00DBB654 /* LICENSE.txt */,
+				0158D75F18613E2E00DBB654 /* Reachability.h */,
+				0158D76018613E2E00DBB654 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Libraries/Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,8 +234,9 @@
 		0158D6CB185F75D400DBB654 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CC;
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = "DynamicDust s.r.o.";
+				ORGANIZATIONNAME = "Dominik Hadl";
 			};
 			buildConfigurationList = 0158D6CE185F75D400DBB654 /* Build configuration list for PBXProject "cocos2d Installer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -228,8 +261,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0158D76118613E2E00DBB654 /* LICENSE.txt in Resources */,
 				0158D729185FFCF700DBB654 /* Credits.rtf in Resources */,
 				0158D72A185FFCF700DBB654 /* InfoPlist.strings in Resources */,
+				0158D76418613F5C00DBB654 /* LICENSE in Resources */,
 				0158D713185F7CCC00DBB654 /* CCInstallerViewController.xib in Resources */,
 				0158D6EF185F75D400DBB654 /* Images.xcassets in Resources */,
 				0158D717185FFB1B00DBB654 /* Localizable.strings in Resources */,
@@ -246,6 +281,7 @@
 				0158D724185FFCC300DBB654 /* AppDelegate.m in Sources */,
 				0158D712185F7CCC00DBB654 /* CCInstallerViewController.m in Sources */,
 				0158D7561860036700DBB654 /* CCIntroView.m in Sources */,
+				0158D76218613E2E00DBB654 /* Reachability.m in Sources */,
 				0158D6E3185F75D400DBB654 /* main.m in Sources */,
 				0158D70E185F7C1100DBB654 /* CCTemplateInstaller.m in Sources */,
 				0158D7591860037400DBB654 /* CCInstallerView.m in Sources */,
@@ -395,6 +431,7 @@
 				0158D706185F75D400DBB654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

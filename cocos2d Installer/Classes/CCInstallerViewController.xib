@@ -150,25 +150,17 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="bvy-7z-3ui">
-                                <rect key="frame" x="607" y="269" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
-                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="oq0-Hj-rqK">
-                                <rect key="frame" x="607" y="68" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
                         </subviews>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-gL-slk">
-                    <rect key="frame" x="139" y="84" width="523" height="42"/>
+                    <rect key="frame" x="163" y="86" width="474" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="NMb-7W-PCB">
+                    <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" id="NMb-7W-PCB">
                         <font key="font" metaFont="system"/>
-                        <string key="title">Administrator password may be required in order to set correct permissions on folders and properly install the templates and/or documentation.</string>
+                        <string key="title">Template files will need to be downloaded prior to templates installation. It may take a few minutes, depending on your internet connection.</string>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -217,6 +209,8 @@
             </subviews>
             <connections>
                 <outlet property="documentationCheckbox" destination="ahn-Bu-1fl" id="itD-I1-fFp"/>
+                <outlet property="progressIndicator" destination="UmP-ji-It9" id="4EK-ih-btw"/>
+                <outlet property="statusText" destination="d4f-gL-slk" id="NTe-K4-Dfm"/>
             </connections>
         </view>
         <customView id="hrg-9d-UTQ">

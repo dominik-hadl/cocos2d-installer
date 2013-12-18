@@ -10,6 +10,8 @@
 
 @interface CCInstallerView : NSView
 
-@property (nonatomic, weak) IBOutlet NSButton *documentationCheckbox;
+@property (nonatomic, weak) IBOutlet NSButton            *documentationCheckbox;
+@property (nonatomic, weak) IBOutlet NSTextField         *statusText;
+@property (nonatomic, weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end
