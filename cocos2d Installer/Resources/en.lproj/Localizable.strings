@@ -5,8 +5,11 @@
   Created by Dominik Hadl on 16/12/13.
   Copyright (c) 2013 DynamicDust s.r.o. All rights reserved.
 */
+//
 "NOT_INSTALLED_STRING" = "";
 "CURRENT_INSTALLED_STRING" = "";
 "OLDER_INSTALLED_STRING" = "";
 "NEWER_INSTALLED_STRING" = "";
 "UNKOWN_INSTALLED_STRING" = "";
+// Installer strings
+"DOWNLOAD_START" = "Download of the latest cocos2d files is in progress, please wait. This may take a while, depending on your internet connection.";

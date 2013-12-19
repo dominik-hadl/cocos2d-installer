@@ -7,13 +7,15 @@
 // -----------------------------------------------------------
 #import <Foundation/Foundation.h>
 // -----------------------------------------------------------
+#define INSTALLER_DEBUG 1
+// -----------------------------------------------------------
 
 typedef NS_ENUM(NSInteger, CCInstallationStatus)
 {
     CCInstallationStatusNotInstalled,
-    CCInstallationStatusCurrentVersionInstalled,
+    CCInstallationStatusInstalled,
     CCInstallationStatusOlderVersionInstalled,
-    CCInstallationStatusNewerVersionInstalled,
+    CCInstallationStatusInstalling,
     CCInstallationStatusUnknown
 };
 
@@ -22,10 +24,13 @@ typedef NS_ENUM(NSInteger, CCInstallationStatus)
 typedef NS_ENUM(NSInteger, CCTemplateInstallerDependency)
 {
     CCTemplateInstallerDependencyCocos2d,
+    CCTemplateInstallerDependencyCocos2dUI,
     CCTemplateInstallerDependencyKazmath,
     CCTemplateInstallerDependencyObjectAL,
+    CCTemplateInstallerDependencyCCBReader,
     CCTemplateInstallerDependencyObjectiveChipmunk,
-    CCTemplateInstallerDependencyXcodeTemplates
+    CCTemplateInstallerDependencyXcodeTemplates,
+    CCTemplateInstallerDependencyCount
 };
 
 // -----------------------------------------------------------
@@ -40,23 +45,46 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDownloadStatus)
 
 // -----------------------------------------------------------
 
+extern NSString *const kCCCocos2dDownloadURL;
+extern NSString *const kCCChipmunkDownloadURL;
+
+// -----------------------------------------------------------
+#pragma mark - CCTemplateInstaller Delegate -
+// -----------------------------------------------------------
+@class CCTemplateInstaller;
+
 @protocol CCTemplateInstallerDelegate <NSObject>
-- (void)progressValueDidChange:(float)newValue;
-- (void)progressStringDidChange:(NSString *)newString;
+@required
+- (void)installer:(CCTemplateInstaller *)installer didFinishDownloadingWithSuccess:(bool)success;
+- (void)installer:(CCTemplateInstaller *)installer didFinishInstallingWithSuccess:(bool)success;
+@optional
+- (void)installer:(CCTemplateInstaller *)installer progressValueDidChange:(float)newValue;
+- (void)installer:(CCTemplateInstaller *)installer progressStringDidChange:(NSString *)newString;
+- (void)installerDidBeginDownloading:(CCTemplateInstaller *)installer;
+- (void)installerDidBeginInstalling:(CCTemplateInstaller *)installer;
 @end
 
 // -----------------------------------------------------------
 
 @interface CCTemplateInstaller : NSObject <NSURLDownloadDelegate>
 {
-    NSFileHandle                            *_logFile;
-    NSString                                *_templatesFolderPath;
-    CCTemplateInstallerDownloadStatus        _filesDownloadStatus;
-    float                                    _maxProgress;
+    NSFileHandle                           *_logFile;
+    NSString                               *_templatesFolderPath;
+    NSString                               *_cocos2dDownloadDestination;
+    NSString                               *_chipmunkDownloadDestination;
+    CCTemplateInstallerDownloadStatus       _filesDownloadStatus;
+    float                                   _expectedDataLength;
+    float                                   _downloadedDataLength;
+    bool                                    _chipmunkDownloaded;
+    bool                                    _cocos2dDownloaded;
     
     struct {
         unsigned int progressValueDidChange:1;
         unsigned int progressStringDidChange:1;
+        unsigned int didFinishDownloadingWithSuccess:1;
+        unsigned int didFinishInstallingWithSuccess:1;
+        unsigned int didBeginDownloading:1;
+        unsigned int didBeginInstalling:1;
     } _delegateRespondsTo;
 }
 
@@ -83,7 +111,7 @@ typedef NS_ENUM(NSInteger, CCTemplateInstallerDownloadStatus)
 
 - (CCInstallationStatus)installationStatus;
 
-- (bool)install;
+- (void)install;
 
 // -----------------------------------------------------------
 @end

@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface CCIntroView : NSView
 
-@property (nonatomic, weak) IBOutlet NSTextField *infoLabel;
+@property (nonatomic, weak) IBOutlet NSImageView    *logoView;
+@property (nonatomic, weak) IBOutlet NSTextField    *infoLabel;
+@property (nonatomic, weak) IBOutlet NSTextField    *titleLabel;
+@property (nonatomic, weak) IBOutlet NSButton       *continueButton;
+
+- (void)playIntroAnimation;
 
 @end

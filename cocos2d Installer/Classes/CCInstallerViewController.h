@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, CCInstallerButton)
 
 // -----------------------------------------------------------
 
-@interface CCInstallerViewController : NSViewController
+@interface CCInstallerViewController : NSViewController <CCTemplateInstallerDelegate>
 {
     // Installer Views
     IBOutlet CCIntroView *__weak     _introView;

@@ -23,6 +23,8 @@
 		0158D76218613E2E00DBB654 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D76018613E2E00DBB654 /* Reachability.m */; };
 		0158D76418613F5C00DBB654 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0158D76318613F5C00DBB654 /* LICENSE */; };
 		0158D7661861424900DBB654 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7651861424900DBB654 /* SystemConfiguration.framework */; };
+		0158D768186218F100DBB654 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158D767186218F100DBB654 /* MainMenu.xib */; };
+		0158D76A1862962300DBB654 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7691862962300DBB654 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		0158D76018613E2E00DBB654 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0158D76318613F5C00DBB654 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		0158D7651861424900DBB654 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0158D767186218F100DBB654 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		0158D7691862962300DBB654 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0158D76A1862962300DBB654 /* QuartzCore.framework in Frameworks */,
 				0158D7661861424900DBB654 /* SystemConfiguration.framework in Frameworks */,
 				0158D6D7185F75D400DBB654 /* Cocoa.framework in Frameworks */,
 			);
@@ -89,6 +94,7 @@
 		0158D6D5185F75D400DBB654 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0158D7691862962300DBB654 /* QuartzCore.framework */,
 				0158D7651861424900DBB654 /* SystemConfiguration.framework */,
 				0158D6D6185F75D400DBB654 /* Cocoa.framework */,
 				0158D6D8185F75D400DBB654 /* Other Frameworks */,
@@ -121,6 +127,7 @@
 		0158D6DD185F75D400DBB654 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0158D767186218F100DBB654 /* MainMenu.xib */,
 				0158D6DE185F75D400DBB654 /* cocos2d Installer-Info.plist */,
 				0158D6E2185F75D400DBB654 /* main.m */,
 				0158D6E4185F75D400DBB654 /* cocos2d Installer-Prefix.pch */,
@@ -268,6 +275,7 @@
 				0158D713185F7CCC00DBB654 /* CCInstallerViewController.xib in Resources */,
 				0158D6EF185F75D400DBB654 /* Images.xcassets in Resources */,
 				0158D717185FFB1B00DBB654 /* Localizable.strings in Resources */,
+				0158D768186218F100DBB654 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

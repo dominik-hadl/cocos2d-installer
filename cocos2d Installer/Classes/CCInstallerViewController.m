@@ -30,9 +30,10 @@
     NSAssert(self, @"Couldn't initialise CCInstallerViewController.");
     
     
-    self.installer = [[CCTemplateInstaller alloc] init];
+    _installer = [[CCTemplateInstaller alloc] init];
+    _installer.delegate = self;
     [self.view addSubview:_introView];
-    
+    [_introView playIntroAnimation];
     
     return self;
 }
@@ -47,28 +48,43 @@
     {
         case CCInstallerButtonContinue:
         {
-            NSLog(@"Continue on install view...");
-            [self.view replaceSubview:_introView with:_installView];
+            [_installView setAlphaValue:0.0f];
+            
+            [[NSAnimationContext currentContext] setDuration:1.0f];
+            [[_introView animator] setAlphaValue:0.0f];
+            
+            [[NSAnimationContext currentContext] setCompletionHandler:^(){
+                [[NSAnimationContext currentContext] setDuration:1.0f];
+                [self.view replaceSubview:_introView with:_installView];
+                [[_installView animator] setAlphaValue:1.0f];
+            }];
+            
             break;
         }
         case CCInstallerButtonInstall:
             NSLog(@"Installing templates...");
             
-            self.installer.shouldInstallDocumentation = (_installView.documentationCheckbox.state == NSOnState);
-            if ([self.installer install])
-            {
-                NSLog(@"Templates installed succesfully.");
-            }
-            else
-            {
-                NSLog(@"Templates installation failed.");
-            }
+            if (_installer.installationStatus == CCInstallationStatusInstalling) return;
+            
+            _installer.shouldInstallDocumentation = (_installView.documentationCheckbox.state == NSOnState);
+            [_installer install];
+            
+            [_installView playInstallingAnimation];
             
             break;
         case CCInstallerButtonBack:
             if ([self.view.subviews containsObject:_installView])
             {
-                [self.view replaceSubview:_installView with:_introView];
+                [_introView setAlphaValue:0.0f];
+                
+                [[NSAnimationContext currentContext] setDuration:1.0f];
+                [[_installView animator] setAlphaValue:0.0f];
+                
+                [[NSAnimationContext currentContext] setCompletionHandler:^(){
+                    [[NSAnimationContext currentContext] setDuration:1.0f];
+                    [self.view replaceSubview:_installView with:_introView];
+                    [[_introView animator] setAlphaValue:1.0f];
+                }];
             }
             else if ([self.view.subviews containsObject:_resultView])
             {
@@ -76,6 +92,56 @@
             }
             break;
     }
+}
+
+// -----------------------------------------------------------
+#pragma mark - CCTemplateInstaller Delegate -
+// -----------------------------------------------------------
+
+- (void)installer:(CCTemplateInstaller *)installer didFinishDownloadingWithSuccess:(bool)success
+{
+    if (success)
+    {
+        // Downloading succeeded
+    }
+    else
+    {
+        // Downloading failed
+    }
+}
+
+- (void)installer:(CCTemplateInstaller *)installer didFinishInstallingWithSuccess:(bool)success
+{
+    if (success)
+    {
+        // Install succeeded
+    }
+    else
+    {
+        // Install failed
+    }
+}
+
+- (void)installer:(CCTemplateInstaller *)installer progressValueDidChange:(float)newValue
+{
+    [_installView.progressIndicator setDoubleValue:newValue];
+}
+
+- (void)installer:(CCTemplateInstaller *)installer progressStringDidChange:(NSString *)newString
+{
+    [_installView.statusText setStringValue:newString];
+}
+
+- (void)installerDidBeginDownloading:(CCTemplateInstaller *)installer
+{
+    [_installView.progressIndicator setIndeterminate:NO];
+    [_installView.progressIndicator setMaxValue:100.0f];
+    [_installView.progressIndicator setDoubleValue:0.0f];
+}
+
+- (void)installerDidBeginInstalling:(CCTemplateInstaller *)installer
+{
+    
 }
 
 // -----------------------------------------------------------
