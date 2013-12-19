@@ -13,3 +13,5 @@
 "UNKOWN_INSTALLED_STRING" = "";
 // Installer strings
 "DOWNLOAD_START" = "Download of the latest cocos2d files is in progress, please wait. This may take a while, depending on your internet connection.";
+"TEMPLATES_INSATLLING" = "The Xcode templates and required dependencies are now being installed.";
+"DOCUMENTATION_INSTALLING" = "The Documentation files are now being installed into Xcode.";

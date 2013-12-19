@@ -62,7 +62,6 @@
             break;
         }
         case CCInstallerButtonInstall:
-            NSLog(@"Installing templates...");
             
             if (_installer.installationStatus == CCInstallationStatusInstalling) return;
             
@@ -91,6 +90,8 @@
                 [self.view replaceSubview:_resultView with:_installView];
             }
             break;
+        case CCInstallerButtonClose:
+            [[NSApplication sharedApplication] terminate:nil];
     }
 }
 
@@ -100,6 +101,7 @@
 
 - (void)installer:(CCTemplateInstaller *)installer didFinishDownloadingWithSuccess:(bool)success
 {
+    [_installView.progressIndicator setIndeterminate:YES];
     if (success)
     {
         // Downloading succeeded
@@ -120,6 +122,16 @@
     {
         // Install failed
     }
+    [_resultView setAlphaValue:0.0f];
+    
+    [[NSAnimationContext currentContext] setDuration:1.0f];
+    [[_installView animator] setAlphaValue:0.0f];
+    
+    [[NSAnimationContext currentContext] setCompletionHandler:^(){
+        [[NSAnimationContext currentContext] setDuration:1.0f];
+        [self.view replaceSubview:_installView with:_resultView];
+        [[_resultView animator] setAlphaValue:1.0f];
+    }];
 }
 
 - (void)installer:(CCTemplateInstaller *)installer progressValueDidChange:(float)newValue

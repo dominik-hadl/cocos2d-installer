@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, CCInstallerButton)
     CCInstallerButtonBack,
     CCInstallerButtonContinue,
     CCInstallerButtonInstall,
+    CCInstallerButtonClose
 };
 
 // -----------------------------------------------------------

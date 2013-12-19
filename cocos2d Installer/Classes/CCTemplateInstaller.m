@@ -93,18 +93,13 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 - (void)install
 {
     self.progress = 0.0f;
-    
-#if INSTALLER_DEBUG == 0
+
     if (_filesDownloadStatus == CCTemplateInstallerDownloadStatusNotDownloaded ||
         _filesDownloadStatus == CCTemplateInstallerDownloadStatusFailed)
     {
         [self downloadAllDependencies];
         return;
     }
-#else
-    _cocos2dDownloadDestination = [NSTemporaryDirectory() stringByAppendingString:@"cocos2d-installer/cocos2d-iphone-develop-v3"];
-    _chipmunkDownloadDestination = [NSTemporaryDirectory() stringByAppendingString:@"cocos2d-installer/Chipmunk2D-master"];
-#endif
     
     bool success = [self installTemplates];
     if (self.shouldInstallDocumentation)
@@ -118,6 +113,7 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 
 - (bool)installTemplates
 {
+    self.progressString = NSLocalizedString(@"TEMPLATES_INSTALLING", @"Now installing templates.");
     if (![self deleteAndCreateTemplatesFolder]) return NO;
   
     for (NSInteger i = 0; i < CCTemplateInstallerDependencyCount; i++)
@@ -131,6 +127,9 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 
 - (void)downloadAllDependencies
 {
+    _cocos2dDownloadDestination = _chipmunkDownloadDestination = nil;
+    _cocos2dDownloaded = _chipmunkDownloaded = NO;
+    
     NSURL *url = [NSURL URLWithString:kCCCocos2dDownloadURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLDownload *download = [[NSURLDownload alloc] initWithRequest:request delegate:self];
@@ -165,7 +164,6 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 {
     NSString *installPath = [_templatesFolderPath stringByAppendingPathComponent:@"cocos2d v3.x"];
     bool success = NO;
-    float progressIncrement = (100.0f / (CCTemplateInstallerDependencyCount + (_shouldInstallDocumentation ? 1.0f : 0.0f)));
     switch (dependency)
     {
         case CCTemplateInstallerDependencyCocos2d:
@@ -173,31 +171,26 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
                                             toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_cocos2d.xctemplate/Libraries/"]];
             success = success & [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/LICENSE_cocos2d.txt"]
                                                  toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_cocos2d.xctemplate/Libraries/"]];
-            self.progress += progressIncrement;
             return success;
         case CCTemplateInstallerDependencyCocos2dUI:
             success = [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d-ui"]
                                        toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_cocos2d-ui.xctemplate/Libraries/"]];
-            self.progress += progressIncrement;
             return success;
         case CCTemplateInstallerDependencyKazmath:
             success = [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/external/kazmath"]
                                             toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_kazmath.xctemplate/Libraries/"]];
             success = success & [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/LICENSE_Kazmath.txt"]
                                                  toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_kazmath.xctemplate/Libraries/"]];
-            self.progress += progressIncrement;
             return success;
         case CCTemplateInstallerDependencyObjectAL:
             success = [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/external/ObjectAL"]
                                             toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_objectal.xctemplate/Libraries/"]];
-            self.progress += progressIncrement;
             return success;
         case CCTemplateInstallerDependencyCCBReader:
             success = [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d-ui/CCBReader"]
                                        toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_ccbreader.xctemplate/Libraries/"]];
             success = success & [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/LICENSE_CCBReader.txt"]
                                                  toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_ccbreader.xctemplate/Libraries/"]];
-            self.progress += progressIncrement;
             return success;
         case CCTemplateInstallerDependencyObjectiveChipmunk:
             success = [self copyFilesFromPath:[_chipmunkDownloadDestination stringByAppendingString:@"/objectivec"]
@@ -208,13 +201,11 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
                                                  toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_chipmunk.xctemplate/Libraries/Chipmunk/chipmunk/"]];
             success = success & [self copyFilesFromPath:[_chipmunkDownloadDestination stringByAppendingString:@"/LICENSE.txt"]
                                                  toPath:[installPath stringByAppendingString:@"/Support/Libraries/lib_chipmunk.xctemplate/Libraries/Chipmunk/"]];
-            self.progress += progressIncrement;
             return success;
             return YES;
         case CCTemplateInstallerDependencyXcodeTemplates:
             success = [self copyFilesFromPath:[_cocos2dDownloadDestination stringByAppendingString:@"/templates/"]
                                             toPath:installPath];
-            self.progress += progressIncrement;
             return success;
         default: return YES;
     };
@@ -224,10 +215,18 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 
 - (bool)installDocumentation
 {
-    bool success = [self runCommand:@""];
+    self.progressString = NSLocalizedString(@"DOCUMENTATION_INSTALLING", @"Now installing documentation.");
     
+    // Create the command for generating documentation through appledoc
+    NSString *command = [_cocos2dDownloadDestination stringByAppendingString:@"/tools/appledoc "];
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CCDocumentationArguments" ofType:@"sh"]];
+    NSString *args = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    command = [command stringByAppendingString:args];
+    command = [command stringByAppendingString:
+     [NSString stringWithFormat:@"--output '%@'\\ %@ %@", [_cocos2dDownloadDestination stringByAppendingString:@"/api-docs"], [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d"], [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d-ui"]]];
     
-    
+    // Run it (cross your fingers here...) :P
+    bool success = [self runCommand:command];
     
     if (success) [self deleteLogFile];
     return success;
@@ -251,6 +250,7 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
     
     // Run the command
     [task launch];
+    [task waitUntilExit];
     
     // Get the output
     NSData *data = [file readDataToEndOfFile];
