@@ -258,6 +258,12 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <connections>
+                <outlet property="_resultImage" destination="tmE-a1-bMj" id="www-yJ-Zxx"/>
+                <outlet property="_titleText" destination="reA-Xs-yfs" id="Bho-db-cDu"/>
+                <outlet property="detailText" destination="HJm-YP-mF1" id="qPf-3m-pBx"/>
+                <outlet property="resultImage" destination="tmE-a1-bMj" id="I2d-Ng-ZWT"/>
+            </connections>
         </view>
         <customView id="hrg-9d-UTQ">
             <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>

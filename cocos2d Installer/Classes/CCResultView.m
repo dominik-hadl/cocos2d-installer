@@ -17,4 +17,10 @@
     // Drawing code here.
 }
 
+- (void)installFailed
+{
+    [_resultImage setImage:[NSImage imageNamed:@"crossIcon"]];
+    _titleText.stringValue = @"Installation Failed";
+}
+
 @end

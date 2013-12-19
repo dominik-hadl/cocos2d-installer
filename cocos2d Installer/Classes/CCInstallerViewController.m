@@ -121,6 +121,9 @@
     else
     {
         // Install failed
+        [_resultView installFailed];
+        _resultView.detailText.stringValue = @""; //_installer.progressString;
+        // TODO: Display correct string!
     }
     [_resultView setAlphaValue:0.0f];
     

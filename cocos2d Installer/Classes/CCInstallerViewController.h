@@ -13,6 +13,7 @@
 // Views
 #import "CCIntroView.h"
 #import "CCInstallerView.h"
+#import "CCResultView.h"
 // -----------------------------------------------------------
 
 typedef NS_ENUM(NSInteger, CCInstallerButton)
@@ -30,7 +31,7 @@ typedef NS_ENUM(NSInteger, CCInstallerButton)
     // Installer Views
     IBOutlet CCIntroView *__weak     _introView;
     IBOutlet CCInstallerView *__weak _installView;
-    IBOutlet NSView *__weak          _resultView;
+    IBOutlet CCResultView *__weak          _resultView;
 }
 
 // -----------------------------------------------------------

@@ -9,5 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CCResultView : NSView
+{
+    IBOutlet NSImageView *__weak _resultImage;
+    IBOutlet NSTextField *__weak _titleText;
+}
+
+@property (nonatomic, weak) IBOutlet NSTextField *detailText;
+
+- (void)installFailed;
 
 @end

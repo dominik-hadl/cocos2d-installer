@@ -107,6 +107,7 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
     
     if (_delegate && _delegateRespondsTo.didFinishInstallingWithSuccess)
         [_delegate installer:self didFinishInstallingWithSuccess:success];
+//    [_delegate installer:self didFinishInstallingWithSuccess:NO];
 }
 
 // -----------------------------------------------------------
