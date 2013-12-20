@@ -49,6 +49,14 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
 }
 
 // -----------------------------------------------------------
+
+- (void)quit
+{
+    // Always delete when quitting
+    [self cleanAfterInstallWithSuccess:YES];
+}
+
+// -----------------------------------------------------------
 #pragma mark - Delegate Setup -
 // -----------------------------------------------------------
 
@@ -107,7 +115,8 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
     
     if (_delegate && _delegateRespondsTo.didFinishInstallingWithSuccess)
         [_delegate installer:self didFinishInstallingWithSuccess:success];
-//    [_delegate installer:self didFinishInstallingWithSuccess:NO];
+    
+    [self cleanAfterInstallWithSuccess:success];
 }
 
 // -----------------------------------------------------------
@@ -231,6 +240,28 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
     
     if (success) [self deleteLogFile];
     return success;
+}
+
+// -----------------------------------------------------------
+
+- (void)cleanAfterInstallWithSuccess:(bool)success
+{
+    if (success)
+    {
+        // Ok, safely delete everything
+        [[NSFileManager defaultManager] removeItemAtPath:[NSTemporaryDirectory() stringByAppendingString:@"cocos2d-installer"]
+                                                   error:nil];
+        
+        _cocos2dDownloadDestination = _chipmunkDownloadDestination = nil;
+        _cocos2dDownloaded = _chipmunkDownloaded = NO;
+        _expectedDataLength = _downloadedDataLength = 0;
+        
+        _filesDownloadStatus = CCTemplateInstallerDownloadStatusNotDownloaded;
+    }
+    else
+    {
+        // Don't delete just yet, user may want to retry
+    }
 }
 
 // -----------------------------------------------------------

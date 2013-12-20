@@ -103,6 +103,7 @@
             }
             break;
         case CCInstallerButtonClose:
+            [_installer quit];
             [[NSApplication sharedApplication] terminate:nil];
     }
 }

@@ -110,6 +110,7 @@ extern NSString *const kCCChipmunkDownloadURL;
 - (CCInstallationStatus)installationStatus;
 
 - (void)install;
+- (void)quit;
 
 // -----------------------------------------------------------
 @end
