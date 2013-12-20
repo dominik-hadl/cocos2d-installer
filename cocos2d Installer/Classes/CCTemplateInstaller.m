@@ -233,7 +233,10 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
     NSString *args = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     command = [command stringByAppendingString:args];
     command = [command stringByAppendingString:
-     [NSString stringWithFormat:@"--output '%@'\\ %@ %@", [_cocos2dDownloadDestination stringByAppendingString:@"/api-docs"], [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d"], [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d-ui"]]];
+     [NSString stringWithFormat:@"--output '%@'\\ %@ %@",
+      [_cocos2dDownloadDestination stringByAppendingString:@"/api-docs"],
+      [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d"],
+      [_cocos2dDownloadDestination stringByAppendingString:@"/cocos2d-ui"]]];
     
     // Run it (cross your fingers here...) :P
     bool success = [self runCommand:command];

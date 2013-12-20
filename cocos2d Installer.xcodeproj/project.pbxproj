@@ -26,7 +26,6 @@
 		0158D768186218F100DBB654 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158D767186218F100DBB654 /* MainMenu.xib */; };
 		0158D76A1862962300DBB654 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7691862962300DBB654 /* QuartzCore.framework */; };
 		01D497DD1862C9A700872459 /* CCResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D497DC1862C9A700872459 /* CCResultView.m */; };
-		01D497E11862D34B00872459 /* org.cocos2d.Cocos2d.docset in Resources */ = {isa = PBXBuildFile; fileRef = 01D497E01862D34B00872459 /* org.cocos2d.Cocos2d.docset */; };
 		01D497E81862D89900872459 /* CCDocumentationArguments.sh in Resources */ = {isa = PBXBuildFile; fileRef = 01D497E71862D49B00872459 /* CCDocumentationArguments.sh */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		0158D7691862962300DBB654 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		01D497DB1862C9A700872459 /* CCResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCResultView.h; sourceTree = "<group>"; };
 		01D497DC1862C9A700872459 /* CCResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCResultView.m; sourceTree = "<group>"; };
-		01D497E01862D34B00872459 /* org.cocos2d.Cocos2d.docset */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = org.cocos2d.Cocos2d.docset; sourceTree = "<group>"; };
 		01D497E71862D49B00872459 /* CCDocumentationArguments.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CCDocumentationArguments.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +164,6 @@
 		0158D71F185FFB8600DBB654 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				01D497E01862D34B00872459 /* org.cocos2d.Cocos2d.docset */,
 				0158D725185FFCF700DBB654 /* Credits.rtf */,
 				0158D727185FFCF700DBB654 /* InfoPlist.strings */,
 				0158D719185FFB1B00DBB654 /* Localizable.strings */,
@@ -282,7 +279,6 @@
 				0158D76118613E2E00DBB654 /* LICENSE.txt in Resources */,
 				0158D729185FFCF700DBB654 /* Credits.rtf in Resources */,
 				0158D72A185FFCF700DBB654 /* InfoPlist.strings in Resources */,
-				01D497E11862D34B00872459 /* org.cocos2d.Cocos2d.docset in Resources */,
 				01D497E81862D89900872459 /* CCDocumentationArguments.sh in Resources */,
 				0158D76418613F5C00DBB654 /* LICENSE in Resources */,
 				0158D713185F7CCC00DBB654 /* CCInstallerViewController.xib in Resources */,
