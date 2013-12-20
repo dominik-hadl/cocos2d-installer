@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>cocos2d Installer by nickskull</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>cocos2d Installer</h1>
+        <p>The template and documentation installer for cocos2d-iphone!</p>
+
+        <p class="view"><a href="https://github.com/nickskull/cocos2d-installer">View the Project on GitHub <small>nickskull/cocos2d-installer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/nickskull/cocos2d-installer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nickskull/cocos2d-installer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nickskull/cocos2d-installer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="https://raw.github.com/cocos2d/cocos2d-iphone/develop-v3/templates/Support/Base/base_ios.xctemplate/Resources/Icons/Icon-76@2x.png" alt="cocos2d-iphone"></p>
+
+<p>Welcome, this is the official page for the installer of the popular <a href="http://www.cocos2d-iphone.org%20cocos2d-iphone">cocos2d</a> game development framework. The installer installs all the required files, templates and documentation into Xcode from the Github repo. It can also uninstall or update the files.  </p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>Mac OS X 10.7 (Lion) and up</li>
+<li>Xcode 4.0 and up</li>
+<li>Some app/game ideas (otherwise cocos2d has no use for you!)</li>
+</ul><h2>
+<a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
+
+<p>For now, there is only this repository from where you can build the installer, however there should be a direct download of the installer in the future - I just need to figure out where it will be hosted. The installer itself should have ~7MB and installation is as easy as double clicking on the icon and then continuing according to installer instructions.</p>
+
+<h4>
+<a name="compiling-installer-from-source" class="anchor" href="#compiling-installer-from-source"><span class="octicon octicon-link"></span></a>Compiling installer from source</h4>
+
+<p>Follow this steps to compile and run the installer from the source code. </p>
+
+<ol>
+<li>Download the installer (<a href="https://github.com/nickskull/cocos2d-installer/archive/master.zip%20as%20a%20zip">zip</a>, preferably)</li>
+<li>Extract it by double clicking on the downloaded file</li>
+<li>Open the Xcode project file called <code>cocos2d Installer.xcodeproj</code> in Xcode</li>
+<li>Press Run and continue with steps in the <a href="#installing">Installing</a> section</li>
+</ol><h4>
+<a name="installing" class="anchor" href="#installing"><span class="octicon octicon-link"></span></a>Installing</h4>
+
+<p>Follow this steps to easily install the cocos2d framework and templates.  </p>
+
+<ol>
+<li>Double click on the installer to open it (if not already opened).</li>
+<li>You should see information about your current installation on the first view. When ready press <strong>Continue</strong>.</li>
+<li>On the <em>What to install?</em> view you can check if you also want to install the documentation (on by default). When ready press <strong>Install</strong>.</li>
+<li>The files will download and installation will start. After the installation ends (with or without success) a new screen will show up.</li>
+<li>If everything was successful, you can safely press <strong>Close</strong>.
+<br>If not, then check the reason of the failure and please open an issue here on Github. You can press <strong>Close</strong> afterwards.</li>
+</ol><h3>
+<a name="how-to-update" class="anchor" href="#how-to-update"><span class="octicon octicon-link"></span></a>How to update?</h3>
+
+<p>... todo ...  </p>
+
+<h3>
+<a name="how-to-uninstall" class="anchor" href="#how-to-uninstall"><span class="octicon octicon-link"></span></a>How to uninstall?</h3>
+
+<p>... todo ...  </p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h2>
+
+<p>These are the things that should be added someday:</p>
+
+<ul>
+<li>News section (featuring latest blog posts, etc.) on Intro view</li>
+<li>Buttons for cocos2d website, forums and repo on Intro view (now only in menu bar)</li>
+<li>Option to send feedback (along with logs, if installation wasn't successful)</li>
+<li>Option to copy the actual downloaded repo files somewhere (user specified dir) if user wants to</li>
+<li>Make the installer a more like "manager", with notifications about new github releases (like "new version available") and more</li>
+<li>Better keyboard control of the installer - right now you can't control it only be keyboard (which is sad)</li>
+</ul><h2>
+<a name="faq" class="anchor" href="#faq"><span class="octicon octicon-link"></span></a>FAQ</h2>
+
+<h4>
+<a name="can-i-help-somehow" class="anchor" href="#can-i-help-somehow"><span class="octicon octicon-link"></span></a>Can I help somehow?</h4>
+
+<p>Of course you can! If you have any idea or issue then please write it into the issue. Better yet, if you know how to fix it or implement it then fork this repo and submit a pull request.  </p>
+
+<p>You can also help by translating the installator strings - all of them are located in the <code>Localizable.strings</code> file.</p>
+
+<h4>
+<a name="i-am-a-designer-can-i-redo-the-horrible-ui-an-its-animations" class="anchor" href="#i-am-a-designer-can-i-redo-the-horrible-ui-an-its-animations"><span class="octicon octicon-link"></span></a>I am a designer, can I redo the horrible UI an its animations?</h4>
+
+<p>Please do! I am only a programmer, my designing skills are not good and I would really welcome any help with the design. I had some ideas (I failed to do them myself), but I am open to anything by an experienced UI designer :)</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/nickskull">nickskull</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
