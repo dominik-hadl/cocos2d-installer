@@ -35,6 +35,8 @@
     [self.view addSubview:_introView];
     [_introView playIntroAnimation];
     
+    _reachability = [Reachability reachabilityWithHostname:@"github.com"];
+    
     return self;
 }
 
@@ -66,9 +68,19 @@
             if (_installer.installationStatus == CCInstallationStatusInstalling) return;
             
             _installer.shouldInstallDocumentation = (_installView.documentationCheckbox.state == NSOnState);
-            [_installer install];
-            
-            [_installView playInstallingAnimation];
+            if ([_reachability isReachable])
+            {
+                [_installer install];
+                [_installView playInstallingAnimation];
+            }
+            else
+            {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setAlertStyle:NSInformationalAlertStyle];
+                [alert setMessageText:NSLocalizedString(@"NO_INTERNET_TITLE", @"No Internet Connection")];
+                [alert setInformativeText:NSLocalizedString(@"NO_INTERNET", @"No Internet Connection Description")];
+                [alert beginSheetModalForWindow:self.view.window completionHandler:nil];
+            }
             
             break;
         case CCInstallerButtonBack:

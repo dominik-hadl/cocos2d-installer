@@ -14,6 +14,9 @@
 #import "CCIntroView.h"
 #import "CCInstallerView.h"
 #import "CCResultView.h"
+
+// Reachability
+#import "Reachability.h"
 // -----------------------------------------------------------
 
 typedef NS_ENUM(NSInteger, CCInstallerButton)
@@ -31,7 +34,9 @@ typedef NS_ENUM(NSInteger, CCInstallerButton)
     // Installer Views
     IBOutlet CCIntroView *__weak     _introView;
     IBOutlet CCInstallerView *__weak _installView;
-    IBOutlet CCResultView *__weak          _resultView;
+    IBOutlet CCResultView *__weak    _resultView;
+    
+    Reachability *_reachability;
 }
 
 // -----------------------------------------------------------

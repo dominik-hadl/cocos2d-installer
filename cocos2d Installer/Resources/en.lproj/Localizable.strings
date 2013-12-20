@@ -5,13 +5,23 @@
   Created by Dominik Hadl on 16/12/13.
   Copyright (c) 2013 DynamicDust s.r.o. All rights reserved.
 */
-//
+
+// Intro strings
 "NOT_INSTALLED_STRING" = "";
 "CURRENT_INSTALLED_STRING" = "";
 "OLDER_INSTALLED_STRING" = "";
 "NEWER_INSTALLED_STRING" = "";
 "UNKOWN_INSTALLED_STRING" = "";
+
 // Installer strings
-"DOWNLOAD_START" = "Download of the latest cocos2d files is in progress, please wait. This may take a while, depending on your internet connection.";
-"TEMPLATES_INSATLLING" = "The Xcode templates and required dependencies are now being installed.";
+"DOWNLOAD_START" = "Download of the latest cocos2d files is in progress, please wait.\nThis may take a while, depending on your internet connection.";
+"PREPARE_INSTALL" = "Preparing downloaded files for installation.\nThis should be relatively quick.";
+"TEMPLATES_INSTALLING" = "The Xcode templates and required dependencies are now being installed.";
 "DOCUMENTATION_INSTALLING" = "The Documentation files are now being installed into Xcode.";
+
+// Errors
+"NO_INTERNET_TITLE" = "No Internet Connection";
+"NO_INTERNET" = "You need to be conected to the Internet in order to install the latest version of cocos2d.\n\nCheck your connection please and try again.";
+"ZIP_ERROR" = "";
+"TEMPLATES_INSTALL_ERROR"  = "";
+"DOC_INSTALL_ERROR"  = "";
