@@ -1,1 +1,3 @@
 language: objective-c
+xcode_project: cocos2d Installer.xcodeproj
+xcode_scheme: cocos2d Installer
