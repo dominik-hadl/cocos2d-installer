@@ -3,6 +3,8 @@ cocos2d-installer
 
 This is an installer for the popular [cocos2d](http://www.cocos2d-iphone.org cocos2d-iphone) game development framework. It installs all the required files, templates and documentation into Xcode from the Github repo. It can also uninstall or update the files.  
 
+[![Build Status](https://travis-ci.org/nickskull/cocos2d-installer.png?branch=master)](https://travis-ci.org/nickskull/cocos2d-installer)
+
 ## Requirements
 
 * Mac OS X 10.7 (Lion) and up
