@@ -11,7 +11,7 @@ This is an installer for the popular [cocos2d](http://www.cocos2d-iphone.org coc
 * Some app/game ideas (otherwise cocos2d has no use for you!)
 
 ## How to install?
-For now, there is only this repository from where you can build the installer, however there should be a direct download of the installer in the future - I just need to figure out where it will be hosted. The installer itself should have ~7MB and installation is as easy as double clicking on the icon and then continuing according to installer instructions.
+For now, there is only this repository from where you can build the installer, however there should be a direct download of the installer in the future - I just need to figure out where it will be hosted. The installer itself should have ~1MB and installation is as easy as double clicking on the icon and then continuing according to installer instructions.
 
 #### Compiling installer from source
 Follow this steps to compile and run the installer from the source code. 
