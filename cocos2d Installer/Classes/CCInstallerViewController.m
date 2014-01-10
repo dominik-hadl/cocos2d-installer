@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dominik Hadl. All rights reserved.
 // -----------------------------------------------------------
 #import "CCInstallerViewController.h"
+#import "CCBlogTableCell.h"
 // -----------------------------------------------------------
 
 @implementation CCInstallerViewController
@@ -36,8 +37,20 @@
     [_introView playIntroAnimation];
     
     _reachability = [Reachability reachabilityWithHostname:@"github.com"];
+    //[self parseBlogPosts];
     
     return self;
+}
+
+- (void)parseBlogPosts
+{
+    _blogPosts = [NSMutableArray array];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^()
+    {
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.cocos2d-iphone.org/feed"]];
+        parser.delegate = self;
+        [parser parse];
+    });
 }
 
 // -----------------------------------------------------------
@@ -170,6 +183,114 @@
 - (void)installerDidBeginInstalling:(CCTemplateInstaller *)installer
 {
     
+}
+
+// -----------------------------------------------------------
+#pragma mark - NSXMLParser Delegate -
+// -----------------------------------------------------------
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName
+    attributes:(NSDictionary *)attributeDict
+{
+    if ([elementName isEqualToString:@"item"])
+    {
+        _currentPost = [[CCBlogPost alloc] init];
+    }
+    if (_currentPost)
+    {
+        if ([elementName isEqualToString:@"title"] ||
+            [elementName isEqualToString:@"pubDate"] ||
+            [elementName isEqualToString:@"link"])
+            _currentString = [[NSMutableString alloc] init];
+    }
+}
+
+// -----------------------------------------------------------
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"item"])
+    {
+        if (_blogPosts.count >= 10)
+        {
+            [parser abortParsing];
+        }
+        
+        [_blogPosts addObject:_currentPost];
+        _currentPost = nil;
+        _currentString = nil;
+    
+    }
+    if (_currentPost)
+    {
+        if ([elementName isEqualToString:@"title"])
+        {
+            _currentPost.title = _currentString;
+            _currentString = nil;
+        }
+        if ([elementName isEqualToString:@"pubDate"])
+        {
+            [_currentPost setDateFromString:_currentString];
+            _currentString = nil;
+        }
+        if ([elementName isEqualToString:@"link"])
+        {
+            _currentPost.link = [NSURL URLWithString:_currentString];
+            _currentString = nil;
+        }
+    }
+}
+
+// -----------------------------------------------------------
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    if (_currentString)
+    {
+        [_currentString appendString:string];
+    }
+}
+
+// -----------------------------------------------------------
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    parser.delegate = nil;
+    [_introView.blogTable reloadData];
+}
+
+// -----------------------------------------------------------
+#pragma mark - NSTableView Delegate -
+// -----------------------------------------------------------
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return _blogPosts.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    return [_blogPosts objectAtIndex:row];
+}
+
+- (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    CCBlogPost *post = [_blogPosts objectAtIndex:row];
+    CCBlogTableCell *customCell = (CCBlogTableCell *)cell;
+    
+    [customCell setTitle:post.title];
+    [customCell setDate:post.date];
+    [customCell setLink:post.link];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+//    NSURL *url = ((CCBlogPost *)[_blogPosts objectAtIndex:[_introView.blogTable selectedRow]]).link;
+//    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 // -----------------------------------------------------------

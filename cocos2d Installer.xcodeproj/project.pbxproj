@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012483CA187BB462001F7D51 /* CCBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 012483C9187BB462001F7D51 /* CCBlogPost.m */; };
 		0158D6D7185F75D400DBB654 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D6D6185F75D400DBB654 /* Cocoa.framework */; };
 		0158D6E3185F75D400DBB654 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158D6E2185F75D400DBB654 /* main.m */; };
 		0158D6EF185F75D400DBB654 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0158D6EE185F75D400DBB654 /* Images.xcassets */; };
@@ -25,11 +26,14 @@
 		0158D7661861424900DBB654 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7651861424900DBB654 /* SystemConfiguration.framework */; };
 		0158D768186218F100DBB654 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0158D767186218F100DBB654 /* MainMenu.xib */; };
 		0158D76A1862962300DBB654 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0158D7691862962300DBB654 /* QuartzCore.framework */; };
+		01A763E81880488E008BCE5E /* CCBlogTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A763E71880488E008BCE5E /* CCBlogTableCell.m */; };
 		01D497DD1862C9A700872459 /* CCResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D497DC1862C9A700872459 /* CCResultView.m */; };
 		01D497E81862D89900872459 /* CCDocumentationArguments.sh in Resources */ = {isa = PBXBuildFile; fileRef = 01D497E71862D49B00872459 /* CCDocumentationArguments.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		012483C8187BB462001F7D51 /* CCBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlogPost.h; sourceTree = "<group>"; };
+		012483C9187BB462001F7D51 /* CCBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBlogPost.m; sourceTree = "<group>"; };
 		0158D6D3185F75D400DBB654 /* cocos2d Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cocos2d Installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0158D6D6185F75D400DBB654 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0158D6D9185F75D400DBB654 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -60,6 +64,8 @@
 		0158D7651861424900DBB654 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0158D767186218F100DBB654 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0158D7691862962300DBB654 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		01A763E61880488E008BCE5E /* CCBlogTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlogTableCell.h; sourceTree = "<group>"; };
+		01A763E71880488E008BCE5E /* CCBlogTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBlogTableCell.m; sourceTree = "<group>"; };
 		01D497DB1862C9A700872459 /* CCResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCResultView.h; sourceTree = "<group>"; };
 		01D497DC1862C9A700872459 /* CCResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCResultView.m; sourceTree = "<group>"; };
 		01D497E71862D49B00872459 /* CCDocumentationArguments.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CCDocumentationArguments.sh; sourceTree = "<group>"; };
@@ -157,6 +163,10 @@
 				0158D70F185F7CCC00DBB654 /* CCInstallerViewController.h */,
 				0158D710185F7CCC00DBB654 /* CCInstallerViewController.m */,
 				0158D711185F7CCC00DBB654 /* CCInstallerViewController.xib */,
+				012483C8187BB462001F7D51 /* CCBlogPost.h */,
+				012483C9187BB462001F7D51 /* CCBlogPost.m */,
+				01A763E61880488E008BCE5E /* CCBlogTableCell.h */,
+				01A763E71880488E008BCE5E /* CCBlogTableCell.m */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A763E81880488E008BCE5E /* CCBlogTableCell.m in Sources */,
 				0158D724185FFCC300DBB654 /* AppDelegate.m in Sources */,
 				01D497DD1862C9A700872459 /* CCResultView.m in Sources */,
 				0158D712185F7CCC00DBB654 /* CCInstallerViewController.m in Sources */,
@@ -303,6 +314,7 @@
 				0158D6E3185F75D400DBB654 /* main.m in Sources */,
 				0158D70E185F7C1100DBB654 /* CCTemplateInstaller.m in Sources */,
 				0158D7591860037400DBB654 /* CCInstallerView.m in Sources */,
+				012483CA187BB462001F7D51 /* CCBlogPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

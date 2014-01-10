@@ -15,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet NSTextField    *infoLabel;
 @property (nonatomic, weak) IBOutlet NSTextField    *titleLabel;
 @property (nonatomic, weak) IBOutlet NSButton       *continueButton;
+@property (nonatomic, weak) IBOutlet NSTableView    *blogTable;
 
 - (void)playIntroAnimation;
 

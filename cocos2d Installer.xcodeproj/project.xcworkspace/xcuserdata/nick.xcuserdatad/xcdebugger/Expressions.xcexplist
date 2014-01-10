@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CCInstallerViewController parser:didEndElement:namespaceURI:qualifiedName:]:CCInstallerViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CCInstallerViewController parserDidEndDocument:]:CCInstallerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_blogPosts">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[CCInstallerViewController parser:didStartElement:namespaceURI:qualifiedName:attributes:]:CCInstallerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "attributeDict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[CCBlogPost setDateFromString:]:CCBlogPost.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

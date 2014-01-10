@@ -17,6 +17,8 @@
 
 // Reachability
 #import "Reachability.h"
+
+#import "CCBlogPost.h"
 // -----------------------------------------------------------
 
 typedef NS_ENUM(NSInteger, CCInstallerButton)
@@ -29,12 +31,17 @@ typedef NS_ENUM(NSInteger, CCInstallerButton)
 
 // -----------------------------------------------------------
 
-@interface CCInstallerViewController : NSViewController <CCTemplateInstallerDelegate>
+@interface CCInstallerViewController : NSViewController <CCTemplateInstallerDelegate, NSXMLParserDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
     // Installer Views
     IBOutlet CCIntroView *__weak     _introView;
     IBOutlet CCInstallerView *__weak _installView;
     IBOutlet CCResultView *__weak    _resultView;
+    
+    // For parsing blog posts
+    NSMutableArray *_blogPosts;
+    CCBlogPost *_currentPost;
+    NSMutableString *_currentString;
     
     Reachability *_reachability;
 }

@@ -128,7 +128,7 @@ NSString *const kCCChipmunkDownloadURL = @"https://github.com/slembcke/Chipmunk2
   
     for (NSInteger i = 0; i < CCTemplateInstallerDependencyCount; i++)
         if (![self installDependency:i]) return NO;
-
+    
     [self deleteLogFile];
     return YES;
 }
